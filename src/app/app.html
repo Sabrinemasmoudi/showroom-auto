@@ -1,0 +1,24 @@
+<app-head-bar></app-head-bar>
+<app-search-bar [autos]="autoList" (onSelectCar)="selectCar($event)"></app-search-bar>
+
+
+@if(selectedCar) {
+    {{selectedCar.model}} <br>
+    <p>
+        {{selectedCar.description}}
+    </p>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

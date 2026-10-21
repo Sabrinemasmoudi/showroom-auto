@@ -1,0 +1,48 @@
+.container {
+    margin: 30px;
+    padding: 5px;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(108, 104, 104);
+    border-radius: 20px;
+}
+
+input {
+    all: unset;
+    font-weight: bold;
+}
+
+fa-icon {
+    cursor: pointer;
+}
+
+label {
+    color: rgb(249, 25, 205);
+    font-weight: bold;
+}
+.cars-container{
+    display: flex;
+    justify-content: space -around;
+    flex-wrap: wrap;
+}
+img{
+    width: 70%;
+
+   
+}
+.auto-card{
+    margin: 20px;
+    width: 20%;
+    Padding: 10px;
+    border: 2px solid rgb(108, 104, 104);
+    border-radius: 15px;
+    box-shadow: 10px 5px 5px rgb(108, 104, 104);
+    height: fit-content;
+}
+Button{
+    all: unset;
+    font-weight: bold;
+    color: rgb(249, 25, 205);
+    cursor: pointer;
+}
