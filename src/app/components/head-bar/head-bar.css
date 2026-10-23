@@ -1,0 +1,17 @@
+.header {
+    padding: 24px 20px;
+    text-align: center;
+    color: #fff8ef;
+    background: linear-gradient(120deg, #4e2029, #702b38 58%, #80503b);
+    box-shadow: 0 5px 18px rgb(55 35 28 / 18%);
+}
+
+.header h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: 0.055em;
+    line-height: 1.2;
+    text-shadow: 0 2px 10px rgb(30 12 16 / 22%);
+}
