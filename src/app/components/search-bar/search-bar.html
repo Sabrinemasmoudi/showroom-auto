@@ -29,6 +29,8 @@
           <button type="button" (click)="selectCar(auto)">See more</button>
         </div>
       </article>
+    } @empty {
+      <p class="empty-state">No vehicles match that search. Try another brand or model.</p>
     }
   </div>
 </div>

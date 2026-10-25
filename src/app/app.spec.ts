@@ -20,4 +20,16 @@ describe('App', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Drive the extraordinary');
   });
+
+  it('should cycle through the featured vehicles', () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+
+    app.selectNextCar();
+    expect(app.selectedCar?.model).toBe('GLA');
+    expect(app.selectedCarNumber).toBe('02 / 16');
+
+    app.selectPreviousCar();
+    expect(app.selectedCar?.model).toBe('C-CLASS');
+  });
 });

@@ -5,7 +5,6 @@ import { Auto } from './interfaces/auto';
 @Component({
   imports: [SearchBar],
   selector: 'app-root',
-  styleUrl: './app.css',
   templateUrl: './app.html',
 })
 export class App {
@@ -18,6 +17,29 @@ export class App {
 
   selectCar(auto: Auto) {
     this.selectedCar = auto;
+  }
+
+  selectNextCar() {
+    this.selectCarAtOffset(1);
+  }
+
+  selectPreviousCar() {
+    this.selectCarAtOffset(-1);
+  }
+
+  private selectCarAtOffset(offset: number) {
+    if (!this.selectedCar || this.autoList.length === 0) {
+      return;
+    }
+
+    const currentIndex = this.autoList.findIndex((car) => car.id === this.selectedCar?.id);
+    const nextIndex = (currentIndex + offset + this.autoList.length) % this.autoList.length;
+    this.selectedCar = this.autoList[nextIndex];
+  }
+
+  get selectedCarNumber(): string {
+    const index = this.autoList.findIndex((car) => car.id === this.selectedCar?.id);
+    return `${String(index + 1).padStart(2, '0')} / ${String(this.autoList.length).padStart(2, '0')}`;
   }
 
   get totalInventory(): number {

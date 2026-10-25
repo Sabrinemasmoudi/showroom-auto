@@ -24,7 +24,11 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": [
+              "src/styles.css",
+              "src/app/app.css",
+              "src/app/components/search-bar/search-bar.css"
+            ]
           },
           "configurations": {
             "production": {

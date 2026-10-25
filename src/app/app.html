@@ -17,11 +17,18 @@
       <a href="#services">Services</a>
     </nav>
 
-    <button class="header-cta" type="button">Book a private viewing</button>
+    <a class="header-cta" href="#inventory">Explore the collection <span aria-hidden="true">↗</span></a>
   </header>
 
+  <nav class="floating-rail" aria-label="Page sections">
+    <a href="#top" aria-label="Back to top"><span>01</span><i></i></a>
+    <a href="#featured" aria-label="Featured vehicle"><span>02</span><i></i></a>
+    <a href="#inventory" aria-label="Vehicle collection"><span>03</span><i></i></a>
+    <a href="#private-sale" aria-label="Private sale"><span>04</span><i></i></a>
+  </nav>
+
   <main class="showroom-main">
-    <section class="hero">
+    <section class="hero" id="top">
       <div class="hero-copy">
         <p class="eyebrow">Curated performance vehicles</p>
         <h1>Drive the extraordinary.</h1>
@@ -62,15 +69,22 @@
       </div>
 
       <div class="featured-panel" id="featured">
-        <div class="panel-badge">Featured now</div>
+        <div class="panel-badge"><span class="live-dot"></span> The spotlight</div>
         @if (selectedCar) {
-          <img [src]="'images/' + selectedCar.photo" [alt]="selectedCar.model" />
+          <div class="featured-image-wrap">
+            <img [src]="'images/' + selectedCar.photo" [alt]="selectedCar.brand + ' ' + selectedCar.model" />
+            <span class="image-index">{{ selectedCarNumber }}</span>
+            <div class="carousel-controls" aria-label="Featured vehicle controls">
+              <button type="button" aria-label="Previous vehicle" (click)="selectPreviousCar()">←</button>
+              <button type="button" aria-label="Next vehicle" (click)="selectNextCar()">→</button>
+            </div>
+          </div>
           <div class="panel-copy">
-            <span>{{ selectedCar.brand }}</span>
+            <span>{{ selectedCar.brand }} <span class="separator">/</span> Private selection</span>
             <h2>{{ selectedCar.model }}</h2>
             <div class="panel-price-row">
               <strong>{{ selectedCar.price }}k</strong>
-              <span>Starting price</span>
+              <span>Indicative price</span>
             </div>
           </div>
         }
@@ -78,6 +92,13 @@
     </section>
 
     <section class="search-section" id="inventory">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">The Aurelia edit</p>
+          <h2>Exceptional by nature.</h2>
+        </div>
+        <span class="collection-count">{{ totalInventory }} vehicles · {{ premiumBrands }} marques</span>
+      </div>
       <app-search-bar [autos]="autoList" (onSelectCar)="selectCar($event)"></app-search-bar>
     </section>
 
@@ -109,11 +130,42 @@
           <p class="description">{{ selectedCar.description }}</p>
 
           <div class="detail-actions">
-            <button class="primary-action" type="button">Reserve this vehicle</button>
-            <button class="secondary-action" type="button">Compare models</button>
+            <a class="primary-action" href="#private-sale">Enquire about this vehicle <span aria-hidden="true">↗</span></a>
+            <button class="secondary-action" type="button" (click)="selectNextCar()">Discover another model</button>
           </div>
         </div>
       </section>
     }
+
+    @if (selectedCar) {
+      <section class="private-sale" id="private-sale">
+        <div class="sale-copy">
+          <p class="eyebrow">Aurelia private sale · Selection {{ selectedCarNumber }}</p>
+          <h2>A considered collection.<br /><em>Not just another showroom.</em></h2>
+          <p>
+            Every vehicle is individually selected for its condition, character, and provenance.
+            Speak with our concierge to arrange a discreet viewing.
+          </p>
+          <a class="sale-link" href="#inventory">Explore the private collection <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="sale-lot">
+          <span class="lot-label">Featured selection</span>
+          <span class="lot-number">№ {{ selectedCarNumber }}</span>
+          <div class="lot-rule"></div>
+          <span class="lot-brand">{{ selectedCar.brand }}</span>
+          <strong>{{ selectedCar.model }}</strong>
+          <div class="lot-footer">
+            <span>Indicative value</span>
+            <b>{{ selectedCar.price }}k</b>
+          </div>
+        </div>
+      </section>
+    }
+
+    <footer class="showroom-footer">
+      <span class="footer-brand">AURELIA MOTORS</span>
+      <span>Driven by distinction.</span>
+      <a href="#top">Back to the beginning ↑</a>
+    </footer>
   </main>
 </div>
