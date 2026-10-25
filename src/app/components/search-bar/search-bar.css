@@ -1,11 +1,11 @@
 ﻿:host {
-  --accent: #8d4e36;
-  --accent-dark: #a96144;
-  --ink: #1e1a19;
-  --muted: #5f5a57;
-  --surface: rgba(255, 255, 255, 0.88);
-  --page: #f6f0eb;
-  --border: rgba(54, 40, 35, 0.08);
+  --accent: #d7ad68;
+  --accent-dark: #b78343;
+  --ink: #f5efe9;
+  --muted: #b6aa9a;
+  --surface: rgba(20, 17, 14, 0.8);
+  --page: #0d0b09;
+  --border: rgba(215, 173, 104, 0.16);
   display: block;
   color: var(--ink);
 }
@@ -23,16 +23,16 @@
   width: min(100%, 640px);
   margin: 0 auto;
   padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(17, 14, 12, 0.82);
   border: 1px solid var(--border);
   border-radius: 18px;
-  box-shadow: 0 14px 30px rgba(33, 24, 20, 0.06);
+  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   transition: border-color 180ms ease, box-shadow 180ms ease;
 }
 
 .search-bar:focus-within {
-  border-color: rgba(141, 78, 54, 0.55);
-  box-shadow: 0 0 0 4px rgba(141, 78, 54, 0.12);
+  border-color: rgba(220, 180, 108, 0.5);
+  box-shadow: 0 0 0 4px rgba(220, 180, 108, 0.1), 0 16px 28px rgba(0, 0, 0, 0.18);
 }
 
 .search-label {
@@ -56,7 +56,7 @@
 }
 
 .search-bar input::placeholder {
-  color: rgba(34, 27, 22, 0.4);
+  color: rgba(245, 239, 233, 0.38);
 }
 
 .search-bar fa-icon {
@@ -65,7 +65,7 @@
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: linear-gradient(135deg, rgba(141, 78, 54, 0.12), rgba(141, 78, 54, 0.18));
+  background: linear-gradient(135deg, rgba(215, 173, 104, 0.13), rgba(183, 131, 67, 0.2));
   color: var(--accent);
 }
 
@@ -79,16 +79,17 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: var(--surface);
+  background: rgba(17, 14, 12, 0.8);
   border: 1px solid var(--border);
   border-radius: 20px;
-  box-shadow: 0 16px 34px rgba(35, 28, 24, 0.06);
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.14);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 
 .auto-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 38px rgba(35, 28, 24, 0.1);
+  border-color: rgba(215, 173, 104, 0.34);
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.2);
 }
 
 .auto-card img {
@@ -153,16 +154,16 @@
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   border: 0;
   border-radius: 12px;
-  color: #fff;
+  color: #20170f;
   font: inherit;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   transition: transform 180ms ease, filter 180ms ease;
 }
 
 .auto-card button:hover {
   transform: translateY(-1px);
-  filter: brightness(1.04);
+  filter: brightness(1.06);
 }
 
 @media (max-width: 560px) {

@@ -1,6 +1,6 @@
 ﻿html {
   min-height: 100%;
-  background: #0d0d0f;
+  background: #090909;
 }
 
 body {
@@ -9,9 +9,9 @@ body {
   margin: 0;
   color: #f3eee9;
   background:
-    radial-gradient(ellipse at 10% 15%, rgba(255, 235, 185, 0.12), transparent 30%),
-    radial-gradient(ellipse at 90% 80%, rgba(130, 97, 61, 0.18), transparent 25%),
-    linear-gradient(135deg, #0d0d0f, #14110f 25%, #1c1714);
+    radial-gradient(ellipse at 10% 15%, rgba(255, 210, 120, 0.08), transparent 32%),
+    radial-gradient(ellipse at 90% 80%, rgba(148, 108, 58, 0.15), transparent 26%),
+    linear-gradient(135deg, #070707, #120f0d 28%, #171411);
   font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
 
