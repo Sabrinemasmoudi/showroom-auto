@@ -1,6 +1,6 @@
-import { Component,Input,Output,EventEmitter } from '@angular/core';
+﻿import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { Auto } from '../../interfaces/auto';
 
 @Component({
@@ -12,22 +12,30 @@ import { Auto } from '../../interfaces/auto';
 export class SearchBar {
   faMagnifyingGlass = faMagnifyingGlass;
 
+  @Input() autos: Auto[] = [];
 
-  @Input() autos: Auto[] = []
+  @Output() onSelectCar = new EventEmitter<Auto>();
+  selectedAutos: Auto[] = [];
 
-  @Output() onSelectCar = new EventEmitter<Auto>()
-  selectedAutos: Auto[] = []
+  ngOnChanges() {
+    this.selectedAutos = this.autos;
+  }
 
   selectAutos(selectedBrand: string) {
-    if (selectedBrand) {
-       this.selectedAutos=this.autos.filter(
-        x => x.brand.toLowerCase().startsWith(selectedBrand.toLowerCase()))}
-        else 
-          this.selectedAutos = this.autos
+    const normalized = selectedBrand.trim().toLowerCase();
+
+    if (!normalized) {
+      this.selectedAutos = this.autos;
+      return;
     }
-    selectCar(auto: Auto) {
-      this.onSelectCar.emit(auto)
 
-}
+    this.selectedAutos = this.autos.filter((car) => {
+      const haystack = `${car.brand} ${car.model}`.toLowerCase();
+      return haystack.includes(normalized);
+    });
+  }
 
+  selectCar(auto: Auto) {
+    this.onSelectCar.emit(auto);
+  }
 }

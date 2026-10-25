@@ -1,24 +1,116 @@
-<app-head-bar></app-head-bar>
-<app-search-bar [autos]="autoList" (onSelectCar)="selectCar($event)"></app-search-bar>
+﻿<div class="showroom-shell">
+  <header class="topbar">
+    <div class="brand-lockup">
+      <span class="brand-mark">A</span>
+      <div>
+        <span class="brand-name">AURELIA MOTORS</span>
+        <span class="brand-tag">Private collection</span>
+      </div>
+    </div>
 
+    <nav class="topnav" aria-label="main navigation">
+      <a href="#inventory">Inventory</a>
+      <a href="#featured">Featured</a>
+      <a href="#services">Services</a>
+    </nav>
 
-@if(selectedCar) {
-    {{selectedCar.model}} <br>
-    <p>
-        {{selectedCar.description}}
-    </p>
-}
+    <button class="header-cta" type="button">Book a private viewing</button>
+  </header>
 
+  <main class="showroom-main">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Curated performance vehicles</p>
+        <h1>Drive the extraordinary.</h1>
+        <p class="hero-text">
+          Discover a handpicked collection of executive sedans and prestige SUVs designed to move
+          with elegance, power, and unmistakable presence.
+        </p>
 
+        <div class="metric-row">
+          <div class="metric-card">
+            <strong>{{ totalInventory }}</strong>
+            <span>Models</span>
+          </div>
+          <div class="metric-card">
+            <strong>{{ premiumBrands }}</strong>
+            <span>Brands</span>
+          </div>
+          <div class="metric-card">
+            <strong>{{ highestPower }} HP</strong>
+            <span>Peak power</span>
+          </div>
+        </div>
 
+        <div class="service-bar" id="services">
+          <div class="service-item">
+            <span class="service-kicker">Concierge</span>
+            <strong>White-glove delivery</strong>
+          </div>
+          <div class="service-item">
+            <span class="service-kicker">Certified</span>
+            <strong>Verified performance</strong>
+          </div>
+          <div class="service-item">
+            <span class="service-kicker">Worldwide</span>
+            <strong>International sourcing</strong>
+          </div>
+        </div>
+      </div>
 
+      <div class="featured-panel" id="featured">
+        <div class="panel-badge">Featured now</div>
+        @if (selectedCar) {
+          <img [src]="'images/' + selectedCar.photo" [alt]="selectedCar.model" />
+          <div class="panel-copy">
+            <span>{{ selectedCar.brand }}</span>
+            <h2>{{ selectedCar.model }}</h2>
+            <div class="panel-price-row">
+              <strong>{{ selectedCar.price }}k</strong>
+              <span>Starting price</span>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
 
+    <section class="search-section" id="inventory">
+      <app-search-bar [autos]="autoList" (onSelectCar)="selectCar($event)"></app-search-bar>
+    </section>
 
+    @if (selectedCar) {
+      <section class="detail-panel">
+        <div class="detail-visual">
+          <img [src]="'images/' + selectedCar.photo" [alt]="selectedCar.model" />
+        </div>
 
+        <div class="detail-copy">
+          <p class="eyebrow">Handpicked selection</p>
+          <h2>{{ selectedCar.brand }} {{ selectedCar.model }}</h2>
 
+          <div class="spec-grid">
+            <div class="spec-item">
+              <span>Horsepower</span>
+              <strong>{{ selectedCar.power }} HP</strong>
+            </div>
+            <div class="spec-item">
+              <span>Starting at</span>
+              <strong>{{ selectedCar.price }}k</strong>
+            </div>
+            <div class="spec-item">
+              <span>Stock</span>
+              <strong>{{ selectedCar.availability }} available</strong>
+            </div>
+          </div>
 
+          <p class="description">{{ selectedCar.description }}</p>
 
-
-
-
-
+          <div class="detail-actions">
+            <button class="primary-action" type="button">Reserve this vehicle</button>
+            <button class="secondary-action" type="button">Compare models</button>
+          </div>
+        </div>
+      </section>
+    }
+  </main>
+</div>
